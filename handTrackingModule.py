@@ -38,6 +38,23 @@ class handDetector():
                    cv2.circle(img, (cx,cy), 5, (255,67,200), cv2.FILLED)
         return lmlist
 
+    def game(self, img, points):
+
+        handin =[]
+        if self.results.multi_hand_landmarks:
+            hand_num = self.results.multi_hand_landmarks[handNo]
+            for id, lm in enumerate(hand_num.landmark):
+                h, w, c = img.shape
+                cx, cy = int(lm.x * w), int(lm.y * h)
+                # print(id, cx,cy)
+                lmlist.append([id, cx, cy])
+                # if id == 4:
+                if draw:
+                    cv2.circle(img, (cx, cy), 5, (255, 67, 200), cv2.FILLED)
+
+
+
+
 def main():
     pTime = 0
     cTime = 0
